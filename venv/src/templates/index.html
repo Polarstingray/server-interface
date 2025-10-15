@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Server Interface Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f6f8; margin: 0; }
+        header { background: #2d3748; color: #fff; padding: 1rem; text-align: center; }
+        .container { max-width: 900px; margin: 2rem auto; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);}
+        h2 { color: #2d3748; }
+        .stats { display: flex; gap: 2rem; margin-bottom: 2rem; }
+        .stat { flex: 1; background: #edf2f7; padding: 1rem; border-radius: 6px; text-align: center; }
+        .actions { margin-top: 2rem; }
+        button { background: #3182ce; color: #fff; border: none; padding: 0.75rem 1.5rem; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #2b6cb0; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Server Interface Dashboard</h1>
+    </header>
+    <div class="container">
+        <h2>Server Status</h2>
+        <div class="stats">
+            <div class="stat">
+                <strong>Uptime</strong>
+                <div>--:--:--</div>
+            </div>
+            <div class="stat">
+                <strong>CPU Usage</strong>
+                <div>--%</div>
+            </div>
+            <div class="stat">
+                <strong>Memory Usage</strong>
+                <div>--%</div>
+            </div>
+        </div>
+        <h2>Actions</h2>
+        <div class="actions">
+            <button>Restart Server</button>
+            <button>View Logs</button>
+        </div>
+    </div>
+    <p>written by chat-gpt</p>
+</body>
+</html>
