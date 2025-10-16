@@ -1,11 +1,16 @@
+# Written with the help of ChatGPT
+
 import logging
 from datetime import datetime
 from functools import wraps
 from flask import request
 import os
 
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+LOG_DIR = os.path.join(ROOT_DIR, 'logs')
+
 class RequestLogger:
-    def __init__(self, log_dir='logs'):
+    def __init__(self, log_dir=LOG_DIR):
         self.log_dir = log_dir
         if not os.path.exists(log_dir):
             os.makedirs(log_dir)

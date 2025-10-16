@@ -1,5 +1,9 @@
 import subprocess
 import time
+import os
+
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+LOG_DIR = os.path.join(BASE_DIR, 'logs')
 
 class ServerAPI:
     @staticmethod
@@ -116,6 +120,18 @@ class ServerAPI:
         if not success:
             return ServerAPI.response(1, "Command failed", result)
         return ServerAPI.response(0, "Command succeeded", result.stdout.strip())
+    
+    @staticmethod
+    def get_history():
+        """
+        returns the last 100 lines of the request log
+        """
+        try:
+            with open(f'{LOG_DIR}/requests.log', 'r') as f:
+                lines = f.readlines()[-100:]
+            return ServerAPI.response(0, "Request history", ''.join(lines))
+        except Exception as e:
+            return ServerAPI.response(1, "Failed to read request log", str(e))
 
 def run_command(cmd, timeout=30):
         try:

@@ -107,6 +107,11 @@ def create_vm(data) :
     res = ServerAPI.create_vm(data)
     return check_response(res)
 
+@server_api_route('/history', methods=['GET'])
+def get_history():
+    res = ServerAPI.get_history()
+    return check_response(res)
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
 
