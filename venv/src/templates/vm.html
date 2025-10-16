@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Virtual Machines</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <header>
+        <h1>VM - Dashboard</h1>
+        <p>Create and run VMs from here</p>
+        <nav>
+            <a class="button" href="{{ url_for('index') }}">Home</a>
+        </nav>
+    </header>
+    <main>
+        <hr />
+        <section aria-labelledby="vm-list-heading">
+            <h2 id="vm-list-heading">Existing VMs</h2>
+            <ul id="vm-list">
+                <!-- populated with load() -->
+        </section>
+        <section>
+            <ul>
+                <li>
+                    <details>
+                        <summary>pirate-vm Console</summary>
+                        <input id="pirate-vm_console" placeholder="enter command"></button>
+                        <button type="button" onclick="console('pirate-vm')">Enter</button>
+                        <pre id="pirate-vm_console_out"></pre>
+                    </details>
+                </li> 
+            </ul>
+        </section>
+        <form aria-labelledby="vm-creation-form">
+            <fieldset>
+                <details>
+                    <summary>vm-creation-form</summary>
+                    <legend id="vm-creation-form"></legend>
+                    <div>
+                        <label for="create_input1">VM Name</label>
+                        <div>
+                            <input id="create_input1" name="name" placeholder="Enter VM name">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="create_input2">VM Memory</label>
+                        <div>
+                            <input id="create_input2" name="memory" placeholder="Enter memory ">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="create_input3">VM VCPUs</label>
+                        <div>
+                            <input id="create_input3" name="vcpus" placeholder="Enter vcpus  ">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="create_input4">VM OS</label>
+                        <div>
+                            <input id="create_input4" name="os" placeholder="Enter os     ">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="create_input5">VM Network</label>
+                        <div>
+                            <input id="create_input5" name="network" placeholder="Enter network">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="create_input6">VM Disk</label>
+                        <div>
+                            <input id="create_input6" name="disk" placeholder="Enter disk   ">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="create_input7">VM ISO</label>
+                        <div>
+                            <input id="create_input7" name="iso" placeholder="Enter iso    ">
+                        </div>
+                    </div>
+                    <div>
+                        <!-- <button type="button" onclick="createVm()">create VM</button> -->
+                        <button data-name="Create_vm" class="create_vm">create VM</button>
+                    </div>
+                </details>
+            </fieldset>
+            <pre id="create_output"></pre>
+        </form>
+    </main>
+    <script type="module" src="{{ url_for('static', filename='js/events.js') }}"></script>
+</body>
+
+</html>

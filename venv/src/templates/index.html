@@ -19,6 +19,12 @@
 <body>
     <header>
         <h1>Server Interface Dashboard</h1>
+        <nav>
+            <a href="#" style="color: #fff; margin: 0 1rem;">Home</a>
+            <a href="vm" style="color: #fff; margin: 0 1rem;">VMs</a>
+            <a href="#" style="color: #fff; margin: 0 1rem;">Settings</a>
+            <a href="#" style="color: #fff; margin: 0 1rem;">Logs</a>
+        </nav>
     </header>
     <div class="container">
         <h2>Server Status</h2>
@@ -43,5 +49,7 @@
         </div>
     </div>
     <p>written by chat-gpt</p>
+    <script type="module" src="{{ url_for('static', filename='js/events.js') }}"></script>
 </body>
+
 </html>
