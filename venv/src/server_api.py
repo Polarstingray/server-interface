@@ -76,7 +76,19 @@ class ServerAPI:
         result, success = run_command(f'virsh reboot {name}')
         if not success:
             return ServerAPI.response(1, "Failed to reboot VM", result)
-        return ServerAPI.response(0, f'rebooted {name}', result.stdout.strip())
+        
+        for _ in range(10) :
+            state = ServerAPI.vm_state(name)["data"]
+            if state == "shut off" :
+                break
+            time.sleep(1)
+        for _ in range(10) :
+            state = ServerAPI.vm_state(name)["data"]
+            if state == "running" :
+                return ServerAPI.response(0, f'rebooted {name}', result.stdout.strip())
+            time.sleep(1)
+            
+        return ServerAPI.response(1, "Failed to reboot VM: Timeout", result.stdout.strip())
 
     @staticmethod
     def stop_vm(name) :
