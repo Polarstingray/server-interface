@@ -1,6 +1,7 @@
 import subprocess
 import time
 import os
+import json
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 LOG_DIR = os.path.join(BASE_DIR, 'logs')
@@ -144,6 +145,17 @@ class ServerAPI:
             return ServerAPI.response(0, "Request history", ''.join(lines))
         except Exception as e:
             return ServerAPI.response(1, "Failed to read request log", str(e))
+    
+    # Replace with environment variables
+    # right now, STATE_FILE is set to the project dir wg_monitor, not the version running on my systemd
+    STATE_FILE = '/home/penguin/projects/wg_monitor/tmp/state.json'
+    @staticmethod
+    def get_wg_peers(path=STATE_FILE) :
+        if not os.path.exists(path) :
+            return ServerAPI.response(1, f"{path} file does not exists")
+        with open(path) as f :
+            data = json.load(f)
+        return ServerAPI.response(0, "wg peer info", data)
 
 def run_command(cmd, timeout=30):
         try:
@@ -164,6 +176,4 @@ def run_command(cmd, timeout=30):
 if __name__ == "__main__":
     # vms = ServerAPI.list_vms()
     # print(vms) 
-
-
     pass

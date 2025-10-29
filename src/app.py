@@ -129,6 +129,11 @@ def get_wg_update(data) :
             print(f'\nwg_updates: {str(wg_updates)}\n')
     return format_response(0, "list of wg updates", wg_updates)
 
+@server_api_route('/wg/peers', methods=['GET'])
+def get_wg_peers() :
+    res = ServerAPI.get_wg_peers()
+    return check_response(res)
+
 def notify(update) :
     print(update)
     sleep(1)
